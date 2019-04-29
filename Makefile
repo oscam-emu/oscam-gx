@@ -100,6 +100,7 @@ TARGET := $(shell $(CC) -dumpmachine 2>/dev/null)
 # Process USE_ variables
 DEFAULT_STAPI_LIB = -L./stapi -loscam_stapi
 DEFAULT_STAPI5_LIB = -L./stapi -loscam_stapi5
+DEFAULT_GXAPI_LIB = -L./extapi/goceed -loscam_gxapi
 DEFAULT_COOLAPI_LIB = -lnxp -lrt
 DEFAULT_COOLAPI2_LIB = -llnxUKAL -llnxcssUsr -llnxscsUsr -llnxnotifyqUsr -llnxplatUsr -lrt
 DEFAULT_SU980_LIB = -lentropic -lrt
@@ -168,6 +169,7 @@ $(eval $(call prepare_use_flags,STAPI,stapi))
 $(eval $(call prepare_use_flags,STAPI5,stapi5))
 $(eval $(call prepare_use_flags,COOLAPI,coolapi))
 $(eval $(call prepare_use_flags,COOLAPI2,coolapi2))
+$(eval $(call prepare_use_flags,GXAPI,gxapi))
 $(eval $(call prepare_use_flags,SU980,su980))
 $(eval $(call prepare_use_flags,AZBOX,azbox))
 $(eval $(call prepare_use_flags,MCA,mca))
@@ -266,6 +268,7 @@ SRC-$(CONFIG_CARDREADER_SMART) += csctapi/ifd_smartreader.c
 SRC-$(CONFIG_CARDREADER_STINGER) += csctapi/ifd_stinger.c
 SRC-$(CONFIG_CARDREADER_STAPI) += csctapi/ifd_stapi.c
 SRC-$(CONFIG_CARDREADER_STAPI5) += csctapi/ifd_stapi.c
+SRC-$(CONFIG_CARDREADER_GXAPI) += csctapi/ifd_gx.c
 
 SRC-$(CONFIG_LIB_MINILZO) += minilzo/minilzo.c
 
@@ -313,6 +316,7 @@ SRC-$(CONFIG_WITH_COOLAPI2) += module-dvbapi-coolapi.c
 SRC-$(CONFIG_WITH_SU980) += module-dvbapi-coolapi.c
 SRC-$(CONFIG_WITH_STAPI) += module-dvbapi-stapi.c
 SRC-$(CONFIG_WITH_STAPI5) += module-dvbapi-stapi5.c
+SRC-$(CONFIG_WITH_GXAPI) += module-dvbapi-gxapi.c
 SRC-$(CONFIG_HAVE_DVBAPI) += module-dvbapi-chancache.c
 SRC-$(CONFIG_HAVE_DVBAPI) += module-dvbapi.c
 SRC-$(CONFIG_MODULE_GBOX) += module-gbox-helper.c

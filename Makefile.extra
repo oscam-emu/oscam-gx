@@ -202,6 +202,15 @@ cross-armLE-unknown-linux:
 
 cross-armLE-unkown-linux: cross-armLE-unknown-linux
 
+gx:
+	$(MAKE) --no-print-directory \
+		CROSS=csky-linux- \
+		OSCAM_BIN=Distribution/oscam-gx \
+		CONF_DIR=/home/gx/oscam \
+		USE_GXAPI=1 \
+		EXTRA_FLAGS="-I ./extapi/goceed" \
+		$(MAKEFLAGS)
+
 azbox:
 	$(MAKE) --no-print-directory \
 		CROSS=mipsel-linux-uclibc- \
