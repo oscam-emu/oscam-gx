@@ -980,7 +980,9 @@ int8_t emu_process_emm(struct s_reader *rdr, uint16_t caid, const uint8_t *emm, 
 	else if (caid_is_irdeto(caid))       result = irdeto2_emm(caid, emmCopy, keysAdded);
 	else if (caid_is_powervu(caid))      result = powervu_emm(emmCopy, keysAdded);
 	else if (caid_is_director(caid))     result = director_emm(emmCopy, keysAdded);
+#ifdef WITH_LIBCRYPTO
 	else if (caid_is_biss_dynamic(caid)) result = biss_emm(rdr, emmCopy, keysAdded);
+#endif
 
 	if (result != 0)
 	{
