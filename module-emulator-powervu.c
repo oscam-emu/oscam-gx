@@ -2251,7 +2251,7 @@ static void create_data_unmask_emm_mode_03(uint8_t *emmBody, uint8_t *data)
 		0xF0, 0xA8, 0x49, 0xFB, 0x79, 0x6C, 0xAF, 0xB0
 	};
 
-	memcpy(data + 0x28, padding, 0x18);
+	memcpy(data + 40, padding, 24);
 
 	for (i = 0; i < 5; i++)
 	{
@@ -2335,7 +2335,7 @@ static uint8_t get_mode_unmask_emm(uint8_t *extraData)
 static void unmask_emm(uint8_t *emm)
 {
 	uint32_t crc, i, l;
-	uint8_t hashModeEmm, modeUnmask, data[30], mask[16];
+	uint8_t hashModeEmm, modeUnmask, data[64], mask[16];
 
 	uint8_t sourcePos[] =
 	{
@@ -2588,7 +2588,7 @@ int8_t powervu_get_hexserials(uint8_t hexserials[][4], uint32_t maxCount, uint16
 				continue;
 			}
 
-			length = strlen(KeyDB->EmuKeys[j].keyName);
+			length = cs_strlen(KeyDB->EmuKeys[j].keyName);
 
 			if (length < 3)
 			{
@@ -2654,7 +2654,7 @@ int8_t powervu_get_hexserials_new(uint8_t hexserials[][4], uint32_t maxCount, ui
 			continue;
 		}
 
-		length = strlen(KeyDB->EmuKeys[i].keyName);
+		length = cs_strlen(KeyDB->EmuKeys[i].keyName);
 
 		if (length < 3)
 		{
